@@ -1,0 +1,106 @@
+<html>
+<head>
+  <style>
+    .tabl{
+      border: solid;
+      width: 300px;
+      height: 300px;
+    }
+  </style>
+  <script>
+    function use(){
+      var title;
+      if(document.form1.tabel.value == 1){
+        title = "Enter Color "
+      }
+      if(document.form1.tabel.value == 2){
+        title = "Enter way to picture";
+      }
+      var cl = prompt(title, "");
+      var td = prompt("Enter number of column or write all");
+      for(let i = 0; i < 3; i++){
+        if(td == "all"){
+          if(document.form1.tabel.value == 1) {
+            document.getElementById('tabl_1').style.background = cl;
+          }
+          if(document.form1.tabel.value == 2){
+            document.getElementById('tabl_1').style.background = 'url(' + cl + ')';
+          }
+        }
+        if(td == i+1){
+          if(document.form1.tabel.value == 1) {
+            document.getElementById('tabl_1').rows[0].cells[td-1].style.background = cl;
+          }
+          if(document.form1.tabel.value == 2){
+            document.getElementById('tabl_1').rows[0].cells[td-1].style.background = 'url(' + cl + ')';
+          }
+        }
+      }
+    }
+    var a,b, sum = 0;
+    function trade_1(){
+      a = document.form2.prod.value;
+    }
+    function trade_2(){
+      b = document.form3.price.value;
+      sum += a*b;
+    }
+    function result(){
+      document.form4.res.value = sum;
+    }
+    function reset(){
+      document.getElementById('tabl_1').style.background = "none";
+      document.getElementById('tabl_1').rows[0].cells[0].style.background = "none";
+      document.getElementById('tabl_1').rows[0].cells[1].style.background = "none";
+      document.getElementById('tabl_1').rows[0].cells[2].style.background = "none";
+    }
+  </script>
+</head>
+<body><form name="form1">
+  <select name="tabel" size="2" onChange="use()">
+    <option value=1>Color<br>
+    <option value=2>Photo<br>
+  </select>
+  <input type="reset" value="Reset" onClick="reset()">
+</form>
+<table id="tabl_1">
+  <tr>
+    <td class="tabl">    </td>
+    <td class="tabl">    </td>
+    <td class="tabl">    </td>
+  </tr>
+</table>
+<br>
+<p>first choose product then count</p>
+<table>
+  <tr>
+    <td>
+      <form name="form2">
+        <select name="prod" size="3" onClick="trade_1()">
+          <option value=5>prod1</option>
+          <option value=3>prod2</option>
+          <option value=7>prod3</option>
+          <option value=10>prod4</option>
+        </select>
+      </form>
+    </td>
+    <td>
+      <form name="form3">
+        <select name="price" size="3" onClick="trade_2()">
+          <option value=1>1 lbs</option>
+          <option value=2>2 lbs</option>
+          <option value=3>3 lbs</option>
+          <option value=4>4 lbs</option>
+        </select>
+      </form>
+    </td>
+  </tr>
+</table>
+<form name="form4">
+  <input type="button" value="res" onClick="result()">
+  <input type="reset" value= "reset" onClick="sum=0">
+  <input  type="text" size="2" name="res">
+</form>
+<a href="index.html">Файл 0</a>
+</body>
+</html>
