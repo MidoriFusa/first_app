@@ -83,8 +83,7 @@
   "husky": {
     "hooks": {
       "precommit":"npm run prettier",
-      "prepush": "call npm run lint && call npm run test",
-      "...": "..."
+      "prepush": "call npm run lint && call npm run test"
     }
   }
 
